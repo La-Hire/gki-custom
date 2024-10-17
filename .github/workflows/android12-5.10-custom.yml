@@ -59,6 +59,8 @@ jobs:
         cp ./gki-patch/config/gki_defconfig-android12-5.10 ./android-kernel/common/arch/arm64/configs/gki_defconfig
         cd ./android-kernel/common
         git apply $GITHUB_WORKSPACE/gki-patch/patchs/*.patch
+        git config --global user.email "bot@example.com"
+        git config --global user.name "Build Bot"
         git add .
         git commit -m mod
 
