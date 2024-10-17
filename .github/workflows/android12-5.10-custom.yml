@@ -8,7 +8,7 @@ on:
         type: string
         description: >
           Patch level of common kernel manifest,
-          for example: 2024-05
+          for example: 2023-11
       os_version:
         required: true
         type: string
@@ -20,7 +20,7 @@ on:
         type: string
         description: >
           With SUBLEVEL of kernel,
-          for example: android12-5.10.209
+          for example: android12-5.10.198
       custom:
         required: true
         type: boolean
@@ -59,6 +59,8 @@ jobs:
         cp ./gki-patch/config/gki_defconfig-android12-5.10 ./android-kernel/common/arch/arm64/configs/gki_defconfig
         cd ./android-kernel/common
         git apply $GITHUB_WORKSPACE/gki-patch/patchs/*.patch
+        git add .
+        git commit -m mod
 
     - name: KernelSU
       if: ${{ inputs.kernelsu == true }}
